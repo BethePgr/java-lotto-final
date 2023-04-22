@@ -18,4 +18,11 @@ public class InputView {
         InputViewValidation.checkLottoAnswer(input);
         return input;
     }
+
+    public static String inputLottoBonus(String lottoAnswer){
+        System.out.println("보너스 번호를 입력해 주세요");
+        String input = Console.readLine();
+        InputViewValidation.checkLottoBonus(input,lottoAnswer);
+        return input;
+    }
 }
