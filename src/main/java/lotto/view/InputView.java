@@ -5,12 +5,10 @@ import lotto.validate.InputViewValidation;
 
 public class InputView {
 
-    private InputViewValidation inputViewValidation = new InputViewValidation();
-
-    public String inputLottoMoney(){
+    public static String inputLottoMoney(){
         System.out.println("구입금액을 입력해 주세요.");
         String input = Console.readLine();
-        inputViewValidation.checkInputMoney(input);
+        InputViewValidation.checkInputMoney(input);
         return input;
     }
 }
