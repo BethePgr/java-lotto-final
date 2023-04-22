@@ -24,4 +24,7 @@ public class LottoTickets {
         lottoTickets = tempLottoTickets;
     }
 
+    public List<Lotto> getLottoTickets(){
+        return lottoTickets;
+    }
 }
