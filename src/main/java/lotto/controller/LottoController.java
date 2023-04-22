@@ -7,6 +7,14 @@ import lotto.view.OutputView;
 public class LottoController {
 
     public void run(){
+        try{
+            runNoTC();
+        }catch(IllegalArgumentException e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    private void runNoTC(){
         String money = InputView.inputLottoMoney();
         OutputView.printLottoCount(money);
 
@@ -18,8 +26,4 @@ public class LottoController {
         InputView.inputLottoBonus(lottoAnswer);
     }
 
-    public static void main(String[] args) {
-        LottoController lc = new LottoController();
-        lc.run();
-    }
 }
