@@ -13,6 +13,8 @@ public class LottoController {
         int lottoCount = Integer.parseInt(money) / 1000;
         LottoTickets lottoTickets = new LottoTickets(lottoCount);
         OutputView.printLottoTickets(lottoTickets);
+
+        InputView.inputLottoAnswer();
     }
 
     public static void main(String[] args) {
