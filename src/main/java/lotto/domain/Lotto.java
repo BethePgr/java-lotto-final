@@ -25,4 +25,8 @@ public class Lotto {
     private boolean validateDistinctSize(List<Integer> numbers){
         return numbers.stream().distinct().count() == 6;
     }
+
+    public List<Integer> getNumbers(){
+        return numbers;
+    }
 }
