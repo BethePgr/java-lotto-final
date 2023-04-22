@@ -14,7 +14,8 @@ public class LottoController {
         LottoTickets lottoTickets = new LottoTickets(lottoCount);
         OutputView.printLottoTickets(lottoTickets);
 
-        InputView.inputLottoAnswer();
+        String lottoAnswer = InputView.inputLottoAnswer();
+        InputView.inputLottoBonus(lottoAnswer);
     }
 
     public static void main(String[] args) {

@@ -52,4 +52,22 @@ public class InputViewValidation {
         String reg = "^[0-9]*$";
         return Arrays.stream(input.split(",")).allMatch(num -> num.matches(reg));
     }
+
+    public static void checkLottoBonus(String input,String lottoAnswer){
+        if(onlyNumber(input)){
+            if(checkOneBetween1And45(input) && checkLottoAnswerNotContainsString(input,lottoAnswer)){
+                return;
+            }
+        }
+        throw new IllegalArgumentException("[ERROR] 1과 45사이의 숫자이면서 로또 당첨 번호에 없는 숫자여야합니다.");
+    }
+
+    private static boolean checkOneBetween1And45(String input){
+        return Integer.parseInt(input) >= 1 && Integer.parseInt(input) <= 45;
+    }
+
+    private static boolean checkLottoAnswerNotContainsString(String input,String lottoAnswer){
+        String[] split = lottoAnswer.split(",");
+        return Arrays.stream(split).noneMatch(num -> num.equals(input));
+    }
 }
