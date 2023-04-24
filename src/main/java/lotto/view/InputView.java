@@ -13,6 +13,7 @@ public class InputView {
     }
 
     public static String inputLottoAnswer(){
+        System.out.println();
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         InputViewValidation.checkLottoAnswer(input);
@@ -20,6 +21,7 @@ public class InputView {
     }
 
     public static String inputLottoBonus(String lottoAnswer){
+        System.out.println();
         System.out.println("보너스 번호를 입력해 주세요");
         String input = Console.readLine();
         InputViewValidation.checkLottoBonus(input,lottoAnswer);
