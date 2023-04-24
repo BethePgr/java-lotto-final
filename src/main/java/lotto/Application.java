@@ -1,5 +1,7 @@
 package lotto;
 
+import java.util.HashMap;
+import java.util.Map;
 import lotto.controller.LottoController;
 
 public class Application {

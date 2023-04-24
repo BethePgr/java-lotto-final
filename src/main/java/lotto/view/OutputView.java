@@ -1,6 +1,12 @@
 package lotto.view;
 
+import java.text.DecimalFormat;
+import java.util.List;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
+import lotto.domain.LottoResult;
 import lotto.domain.LottoTickets;
 
 public class OutputView {
@@ -16,10 +22,34 @@ public class OutputView {
             System.out.println(lotto.getNumbers());
         }
     }
-
-    public static void printLottoResults(){
-
+/*
+당첨 통계
+---
+3개 일치 (5,000원) - 1개
+4개 일치 (50,000원) - 0개
+5개 일치 (1,500,000원) - 0개
+5개 일치, 보너스 볼 일치 (30,000,000원) - 0개
+6개 일치 (2,000,000,000원) - 0개
+총 수익률은 62.5%입니다.
+ */
+    public static void printLottoResults(LottoResult lottoResult){
+        System.out.println();
+        System.out.println("당첨 통계");
+        System.out.println("---");
+        DecimalFormat formats = new DecimalFormat("###,###");
+        List<Entry<LottoRank, Integer>> lottoResults = createLottoResults(lottoResult);
+        for(Entry<LottoRank,Integer> entry : lottoResults){
+            String temp="";
+            if(entry.getKey().isCorrectBonus() == true){
+                temp=", 보너스 볼 일치";
+            }
+            System.out.println(entry.getKey().getCorrectCount()+"개 일치"+temp+ " ("+formats.format(entry.getKey().getPrice())+") - " + entry.getValue()+"개");
+        }
     }
 
+    private static List<Entry<LottoRank, Integer>> createLottoResults(LottoResult lottoResult){
+        return lottoResult.getMap().entrySet().stream().filter(entry -> !entry.getKey().equals(LottoRank.None)).collect(
+            Collectors.toList());
+    }
 
 }
