@@ -43,7 +43,7 @@ public class OutputView {
             if(entry.getKey().isCorrectBonus() == true){
                 temp=", 보너스 볼 일치";
             }
-            System.out.println(entry.getKey().getCorrectCount()+"개 일치"+temp+ " ("+formats.format(entry.getKey().getPrice())+") - " + entry.getValue()+"개");
+            System.out.println(entry.getKey().getCorrectCount()+"개 일치"+temp+ " ("+formats.format(entry.getKey().getPrice())+"원) - " + entry.getValue()+"개");
         }
     }
 
@@ -52,4 +52,16 @@ public class OutputView {
             Collectors.toList());
     }
 
+    public static void printBenefit(int money,LottoResult lottoResult){
+        System.out.printf("총 수익률은 %.1f%%입니다.",calculateBenefit(money,lottoResult));
+    }
+
+    private static double calculateBenefit(int money,LottoResult lottoResult){
+        long benefit = 0;
+        List<Entry<LottoRank, Integer>> lottoResults = createLottoResults(lottoResult);
+        for(Entry<LottoRank,Integer> entry : lottoResults){
+            benefit += entry.getKey().getPrice() * entry.getValue();
+        }
+        return (double)benefit*100/money;
+    }
 }
