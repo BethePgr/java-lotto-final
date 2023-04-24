@@ -17,4 +17,9 @@ public class OutputView {
         }
     }
 
+    public static void printLottoResults(){
+
+    }
+
+
 }

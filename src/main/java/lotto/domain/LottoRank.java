@@ -8,6 +8,7 @@ public enum LottoRank {
     FiveAndBonus(30000000,5,true),
     Six(2000000000,6,false),
     None(0,0,false);
+
     private final int price;
     private final int correctCount;
     private final boolean correctBonus;
@@ -18,11 +19,25 @@ public enum LottoRank {
         this.correctBonus = correctBonus;
     }
 
+    public static boolean checkLottoRank(LottoRank lottoRank, int count, boolean bonus){
+        if(lottoRank.correctCount != count){
+            return false;
+        }
+        if(Five.correctCount == count){
+            return lottoRank.correctBonus == bonus;
+        }
+        return true;
+    }
+
     public int getPrice(){
         return price;
     }
 
     public int getCorrectCount(){
         return correctCount;
+    }
+
+    public boolean isCorrectBonus(){
+        return correctBonus;
     }
 }
