@@ -24,11 +24,11 @@ public class InputView {
             .collect(Collectors.toList());
     }
 
-    public static String inputLottoBonus(String lottoAnswer) {
+    public static int inputLottoBonus(List<Integer> lottoAnswer) {
         System.out.println();
         System.out.println("보너스 번호를 입력해 주세요");
         String input = Console.readLine();
         InputViewValidation.checkLottoBonus(input, lottoAnswer);
-        return input;
+        return Integer.parseInt(input);
     }
 }

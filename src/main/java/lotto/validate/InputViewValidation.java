@@ -1,6 +1,7 @@
 package lotto.validate;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class InputViewValidation {
@@ -53,7 +54,7 @@ public class InputViewValidation {
         return Arrays.stream(input.split(",")).allMatch(num -> num.matches(reg));
     }
 
-    public static void checkLottoBonus(String input,String lottoAnswer){
+    public static void checkLottoBonus(String input, List<Integer> lottoAnswer){
         if(onlyNumber(input)){
             if(checkOneBetween1And45(input) && checkLottoAnswerNotContainsString(input,lottoAnswer)){
                 return;
@@ -66,8 +67,7 @@ public class InputViewValidation {
         return Integer.parseInt(input) >= 1 && Integer.parseInt(input) <= 45;
     }
 
-    private static boolean checkLottoAnswerNotContainsString(String input,String lottoAnswer){
-        String[] split = lottoAnswer.split(",");
-        return Arrays.stream(split).noneMatch(num -> num.equals(input));
+    private static boolean checkLottoAnswerNotContainsString(String input,List<Integer> lottoAnswer){
+        return lottoAnswer.stream().noneMatch(num -> num==Integer.parseInt(input));
     }
 }
