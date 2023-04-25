@@ -23,7 +23,7 @@ public class OutputView {
         }
     }
 
-    private static void printPreLottoResults(){
+    private static void printPreLottoResults() {
         System.out.println();
         System.out.println("당첨 통계");
         System.out.println("---");
@@ -37,15 +37,15 @@ public class OutputView {
         }
     }
 
-    private static void printOneLottoResult(Entry<LottoRank, Integer> entry){
+    private static void printOneLottoResult(Entry<LottoRank, Integer> entry) {
         String temp = "";
         if (entry.getKey().isCorrectBonus()) {
             temp = ", 보너스 볼 일치";
         }
-        printOneLottoResultFormat(entry,temp);
+        printOneLottoResultFormat(entry, temp);
     }
 
-    private static void printOneLottoResultFormat(Entry<LottoRank, Integer> entry,String temp){
+    private static void printOneLottoResultFormat(Entry<LottoRank, Integer> entry, String temp) {
         DecimalFormat formats = new DecimalFormat("###,###");
         System.out.println(
             entry.getKey().getCorrectCount() + "개 일치" + temp + " (" + formats.format(

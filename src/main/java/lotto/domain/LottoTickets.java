@@ -22,8 +22,9 @@ public class LottoTickets {
         lottoTickets = tempLottoTickets;
     }
 
-    private Lotto makeOneLotto(){
-        List<Integer> tempLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE));
+    private Lotto makeOneLotto() {
+        List<Integer> tempLotto = new ArrayList<>(
+            Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE));
         Collections.sort(tempLotto);
         return new Lotto(tempLotto);
     }
