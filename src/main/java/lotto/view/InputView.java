@@ -20,7 +20,7 @@ public class InputView {
         System.out.println("당첨 번호를 입력해 주세요.");
         String input = Console.readLine();
         InputViewValidation.checkLottoAnswer(input);
-        return Arrays.stream(input.split(",")).map(num -> Integer.parseInt(num))
+        return Arrays.stream(input.split(",")).map(Integer::parseInt)
             .collect(Collectors.toList());
     }
 

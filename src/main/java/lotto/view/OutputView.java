@@ -40,7 +40,7 @@ public class OutputView {
         List<Entry<LottoRank, Integer>> lottoResults = createLottoResults(lottoResult);
         for(Entry<LottoRank,Integer> entry : lottoResults){
             String temp="";
-            if(entry.getKey().isCorrectBonus() == true){
+            if(entry.getKey().isCorrectBonus()){
                 temp=", 보너스 볼 일치";
             }
             System.out.println(entry.getKey().getCorrectCount()+"개 일치"+temp+ " ("+formats.format(entry.getKey().getPrice())+"원) - " + entry.getValue()+"개");
@@ -60,7 +60,7 @@ public class OutputView {
         long benefit = 0;
         List<Entry<LottoRank, Integer>> lottoResults = createLottoResults(lottoResult);
         for(Entry<LottoRank,Integer> entry : lottoResults){
-            benefit += entry.getKey().getPrice() * entry.getValue();
+            benefit += (long)entry.getKey().getPrice() * entry.getValue();
         }
         return (double)benefit*100/money;
     }
