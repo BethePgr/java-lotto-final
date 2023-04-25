@@ -8,6 +8,7 @@ import java.util.List;
 public class LottoTickets {
 
     private List<Lotto> lottoTickets;
+    private static final int LOTTO_SIZE = 6;
 
     public LottoTickets(int lottoMoney) {
         makeLottoTickets(lottoMoney);
@@ -22,7 +23,7 @@ public class LottoTickets {
     }
 
     private Lotto makeOneLotto(){
-        List<Integer> tempLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, 6));
+        List<Integer> tempLotto = new ArrayList<>(Randoms.pickUniqueNumbersInRange(1, 45, LOTTO_SIZE));
         Collections.sort(tempLotto);
         return new Lotto(tempLotto);
     }

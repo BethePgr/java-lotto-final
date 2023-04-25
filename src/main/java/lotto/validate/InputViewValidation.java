@@ -6,6 +6,8 @@ import java.util.stream.Stream;
 
 public class InputViewValidation {
 
+    private static final int LOTTO_SIZE = 6;
+
     public static void checkInputMoney(String input){
         if(onlyNumber(input)){
             if(divide1000(input) && notStartWith0(input)){
@@ -38,11 +40,11 @@ public class InputViewValidation {
     }
 
     private static boolean checkStringWithDistinctSixNum(String input){
-        return Arrays.stream(input.split(",")).distinct().count() == 6;
+        return Arrays.stream(input.split(",")).distinct().count() == LOTTO_SIZE;
     }
 
     private static boolean checkStringWithSixNum(String input){
-        return Arrays.stream(input.split(",")).count() == 6;
+        return Arrays.stream(input.split(",")).count() == LOTTO_SIZE;
     }
 
     private static boolean checkBetween1And45(String input){
