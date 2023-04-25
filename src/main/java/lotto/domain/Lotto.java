@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Lotto {
     private final List<Integer> numbers;
-
+    private static final int LOTTO_SIZE = 6;
     public Lotto(List<Integer> numbers) {
         validate(numbers);
         this.numbers = numbers;
@@ -18,12 +18,12 @@ public class Lotto {
     }
 
     private boolean validateSize(List<Integer> numbers) {
-        return numbers.size() == 6;
+        return numbers.size() == LOTTO_SIZE;
     }
 
 
     private boolean validateDistinctSize(List<Integer> numbers){
-        return numbers.stream().distinct().count() == 6;
+        return numbers.stream().distinct().count() == LOTTO_SIZE;
     }
 
     public List<Integer> getNumbers(){
