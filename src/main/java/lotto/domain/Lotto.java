@@ -21,7 +21,7 @@ public class Lotto {
         return numbers.size() == 6;
     }
 
-    // TODO: 추가 기능 구현
+
     private boolean validateDistinctSize(List<Integer> numbers){
         return numbers.stream().distinct().count() == 6;
     }

@@ -13,7 +13,7 @@ public class LottoResult {
     private final LottoTickets lottoTickets;
     private final List<Integer> lottoAnswer;
     private final int bonusNumber;
-    private final Map<LottoRank,Integer> map = new EnumMap<LottoRank, Integer>(LottoRank.class);
+    private final Map<LottoRank,Integer> map = new EnumMap<>(LottoRank.class);
 
     public LottoResult(LottoTickets lottoTickets, List<Integer> lottoAnswer, int bonusNumber) {
         this.lottoTickets = lottoTickets;
@@ -24,8 +24,8 @@ public class LottoResult {
     }
 
     public void initMap(){
-        List<LottoRank> lottoranks = Arrays.stream(LottoRank.values()).collect(Collectors.toList());
-        for(LottoRank lottoRank: lottoranks){
+        List<LottoRank> lottoRanks = Arrays.stream(LottoRank.values()).collect(Collectors.toList());
+        for(LottoRank lottoRank: lottoRanks){
             map.put(lottoRank,0);
         }
     }
@@ -41,9 +41,17 @@ public class LottoResult {
 
     private LottoRank getLottoRank(List<Integer> numbers, List<Integer> lottoAnswer,
         int bonusNumber) {
-        int count = (int) numbers.stream()
-            .filter(num -> lottoAnswer.stream().anyMatch(Predicate.isEqual(num))).count();
+        int count = getCountOfSameNumbers(numbers, lottoAnswer);
         boolean bonus = lottoAnswer.contains(bonusNumber);
+        return getLottoRankSameCountAndBonus(count,bonus);
+    }
+
+    private int getCountOfSameNumbers(List<Integer> numbers, List<Integer> lottoAnswer){
+        return (int) numbers.stream()
+            .filter(num -> lottoAnswer.stream().anyMatch(Predicate.isEqual(num))).count();
+    }
+
+    private LottoRank getLottoRankSameCountAndBonus(int count, boolean bonus){
         return Arrays.stream(LottoRank.values())
             .filter(num -> LottoRank.checkLottoRank(num, count, bonus)).findAny()
             .orElse(LottoRank.None);
